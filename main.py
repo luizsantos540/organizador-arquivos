@@ -1,3 +1,4 @@
+import shutil
 from pathlib import Path
 
 categorias = {
@@ -15,22 +16,37 @@ categorias = {
     ".mp3": "Áudios"
 }
 
+ignorar = {
+    "main.py",
+    "README.md",
+    ".gitignore"
+}
+
 pasta = Path(".")
 
-print("Arquivos encontrados:\n")
+print("Organizando arquivos...\n")
 
 for arquivo in pasta.iterdir():
-    if arquivo.is_file():
 
-        categoria = categorias.get(
-            arquivo.suffix.lower(),
-            "Outros"
-        )
+    if not arquivo.is_file():
+        continue
 
-        pasta_destino = Path(categoria)
+    if arquivo.name in ignorar:
+        continue
 
-        pasta_destino.mkdir(exist_ok=True)
+    categoria = categorias.get(
+        arquivo.suffix.lower(),
+        "Outros"
+    )
 
-        destino = pasta_destino / arquivo.name
+    pasta_destino = Path(categoria)
 
-        print(f"{arquivo.name} -> seria movido para {destino}")
+    pasta_destino.mkdir(exist_ok=True)
+
+    destino = pasta_destino / arquivo.name
+
+    shutil.move(str(arquivo), str(destino))
+
+    print(f"{arquivo.name} movido para {destino}")
+
+print("\nOrganização concluída!")

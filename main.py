@@ -2,7 +2,8 @@ from pathlib import Path
 
 pasta = Path(".")
 
-print ("arquivos encontrados:")
+print("Arquivos encontrados:")
+
 for arquivo in pasta.iterdir():
     if arquivo.is_file():
-        print (item.name)
+        print(arquivo.name)

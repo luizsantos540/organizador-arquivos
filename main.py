@@ -29,6 +29,8 @@ for arquivo in pasta.iterdir():
 
         pasta_destino = Path(categoria)
 
+        pasta_destino.mkdir(exist_ok=True)
+
         destino = pasta_destino / arquivo.name
 
         print(f"{arquivo.name} -> seria movido para {destino}")

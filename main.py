@@ -27,4 +27,8 @@ for arquivo in pasta.iterdir():
             "Outros"
         )
 
-        print(f"{arquivo.name} -> {categoria}")
+        pasta_destino = Path(categoria)
+
+        destino = pasta_destino / arquivo.name
+
+        print(f"{arquivo.name} -> seria movido para {destino}")

@@ -39,7 +39,7 @@ for arquivo in pasta.iterdir():
     if not arquivo.is_file():
         continue
 
-    if arquivo.name in ignorar:
+    if arquivo.name in ignorar or arquivo.suffix.lower() == ".py":
         continue
 
     categoria = categorias.get(

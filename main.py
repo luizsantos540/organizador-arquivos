@@ -30,6 +30,8 @@ if not pasta.exists():
     print("\nA pasta informada não existe.")
     exit()
 
+arquivos_organizados = 0
+
 print("\nOrganizando arquivos...\n")
 
 for arquivo in pasta.iterdir():
@@ -53,6 +55,9 @@ for arquivo in pasta.iterdir():
 
     shutil.move(str(arquivo), str(destino))
 
+    arquivos_organizados += 1
+
     print(f"{arquivo.name} movido para {destino}")
 
 print("\nOrganização concluída!")
+print(f"\n{arquivos_organizados} arquivos organizados.")

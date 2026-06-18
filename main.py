@@ -22,9 +22,15 @@ ignorar = {
     ".gitignore"
 }
 
-pasta = Path(".")
+caminho = input("Digite o caminho da pasta que deseja organizar: ")
 
-print("Organizando arquivos...\n")
+pasta = Path(caminho)
+
+if not pasta.exists():
+    print("\nA pasta informada não existe.")
+    exit()
+
+print("\nOrganizando arquivos...\n")
 
 for arquivo in pasta.iterdir():
 
@@ -39,7 +45,7 @@ for arquivo in pasta.iterdir():
         "Outros"
     )
 
-    pasta_destino = Path(categoria)
+    pasta_destino = pasta / categoria
 
     pasta_destino.mkdir(exist_ok=True)
 
